@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang="en">
+<head>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Mono:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>2026</title>
+
+<style>
+:root{
+  --page-pad: clamp(22px,5vw,70px);
+  --email-clearance: 120px;
+}
+
+html,body{
+  margin:0;
+  background:#002DEE;
+  color:#fff;
+  font-family: "Atkinson Hyperlegible Mono", sans-serif;
+  overflow-x:hidden;
+  scrollbar-width:none;
+}
+body::-webkit-scrollbar{ display:none; }
+
+/* disable selection globally */
+*{
+  -webkit-user-select:none;
+  -moz-user-select:none;
+  -ms-user-select:none;
+  user-select:none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* allow selection ONLY for email */
+#email{
+  -webkit-user-select:text;
+  -moz-user-select:text;
+  -ms-user-select:text;
+  user-select:text;
+  cursor:text;
+}
+
+#email::selection{ background:#fff; color:#000; }
+#email::-moz-selection{ background:#fff; color:#000; }
+
+img,a{
+  -webkit-user-drag:none;
+  user-drag:none;
+}
+
+/* link styling */
+.value a{
+  color:inherit;
+  text-decoration:none;
+}
+.value a:hover{
+  text-decoration:underline;
+}
+
+/* logo */
+.logo{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  z-index:10;
+  pointer-events:none;
+}
+.logo img{
+  width:100%;
+  height:auto;
+  display:block;
+}
+
+/* page wrapper */
+.page{
+  box-sizing:border-box;
+  width:100%;
+  max-width:100%;
+  padding-left: var(--page-pad);
+  padding-right: var(--page-pad);
+  max-height: calc(100svh - var(--email-clearance));
+  overflow-y:auto;
+  overflow-x:hidden;
+  scrollbar-width:none;
+}
+.page::-webkit-scrollbar{ display:none; }
+
+/* header */
+.header-inner{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  width:100%;
+  max-width:100%;
+  gap: clamp(24px,4vw,80px);
+  flex-wrap:wrap;
+}
+
+.col{
+  flex: 0 1 auto;
+  min-width: 0;
+  display:flex;
+  flex-direction:column;
+  gap: 6px;
+}
+
+.label{
+  font-size: clamp(9px, 1.2vw, 12px);
+  letter-spacing: .08em;
+  opacity:.9;
+  line-height: 1.1;
+  white-space:nowrap;
+}
+
+.value{
+  font-size: clamp(11px, 1.5vw, 28px);
+  font-weight: 500;
+  line-height: 1.05;
+  white-space:nowrap;
+}
+
+.desc{
+  margin-top:30px;
+  width:100%;
+  max-width:100%;
+  font-size: clamp(15px,1.6vw,19px);
+  line-height:1.5;
+  text-align: justify;
+  text-justify: inter-word;
+  hyphens:none;
+  -webkit-hyphens:none;
+  -ms-hyphens:none;
+  overflow-wrap:anywhere;
+}
+
+/* credits */
+.credits{
+  position:fixed;
+  bottom:18px;
+  left: var(--page-pad);
+  font-size:14px;
+  opacity:.9;
+  z-index:11;
+}
+
+/* email */
+.email{
+  position:fixed;
+  bottom:18px;
+  right: var(--page-pad);
+  font-size: clamp(13px, 3vw, 20px);
+  text-align:right;
+  z-index:11;
+}
+
+@media (max-width:500px){
+  .header-inner{ gap:14px; }
+  .desc{ text-align:left; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="logo">
+  <img src="logo2.png" alt="">
+</div>
+
+<div class="page">
+
+  <div class="header-inner">
+
+    <div class="col">
+      <div class="label">YEAR</div>
+      <div class="value">2026</div>
+    </div>
+
+    <div class="col">
+      <div class="label">PROJECT</div>
+      <div class="value">Coral Reef</div>
+    </div>
+
+    <div class="col">
+      <div class="label">ROLE</div>
+      <div class="value">Marine Biologist</div>
+    </div>
+
+    <div class="col">
+      <div class="label">LOCATION</div>
+      <div class="value">
+        <a href="https://www.google.com/maps/search/?api=1&query=Coco+Bodu+Hithi"
+           target="_blank"
+           rel="noopener">
+          North Malé Atoll, MV
+        </a>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="label">ORG</div>
+      <div class="value">
+        <a href="https://www.cococollection.com/en/coco-cares/marine-biology"
+               target="_blank"
+               rel="noopener">
+          Coco Cares
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="desc">
+<p>Day 1<p>
+Bamboozled. I show up to the boat. Thr ferryman, or so I thought, pulls me aside, lets the guests on first then very ominously wishes me good luck. His face - deadpan. I thank him. Why? I don't know. The driver of the speed boat drives how I can only describe as if Captain Jack Sparrow was blind. He has the heart but not the skill. He's not cutting through the waves, he is hitting every single wave with the hull at 70mph. I think of telling Fabio this, he would be appalled. I fear I am in the hands of a madman who continously checks his phone and steers like dad playing mario kart. I arrive to the hotel. A man playing a singular bongo and the staff in a line with hot towels. I panic take a towel forget its in my hand as I talk to Megan, and replace unused towel on stack of used towels. I am shown the hotel by Shireef. He speaks fast and doesn't repeat himself, mix that with his very heavy Bangladeshi accent, I'm gone. I nod and ask questions he doesn't understand in attempt to keep up. I shower, finally and unpack into my tiny closet in the room I'm sharing with 3 srilankan girls. They are lovely, to my relief. Meet Megan and two other girls for dinner. Drop my fork on the floor. Its' clatter echoes. The room full of male staff looks over. I give them that flat line smile you give someone you know from school but not well enough to say hi. We sit at a table outsidr to eat. A small budgie appears next to me. I am informed his name is Barry. How fitting, we joke. Megan tells me I will be thrown into the deep end, she wants me to how to dive, she needs me to cover her holifay time for a while month in June all the while Barry, freaky little cannibal, is eyeing my chicken.
+  
+<p>Day 2<p>
+What a difference a day can make. Woke up with purpose. I had a meeting with HR at 9:30. Went straight to breakfast with one of my roomates, Himasha (Him -ah-sha), who works at one of the resort shops. Although very friendly, there is somewhat of a language barrier. So its safe to say my two pancakes with jam were a pretty silent affair, with the occasional awkward smile between bites. I decide after I'll grab some shampoo and conditioner from the staff shop before my meeting. Walking around the resort I'm smiling and greeting every staff member, as Megan suggested. I recieve smiles and waves back. Great. I'm acclimitising...or so one thought. After purchasing my goods, I head to the HR office. I look at the bottles in my hand. The bottles are near my shorts. My shorts that have the fly down. I facepalm. Well done Manon. Not the impression I was hoping to make. As discreetly as possible I resolve the partially exposed crotch issue and make a mental note to check next time I leave for a meeting. I sit down with Mua. I sign many forms. He talks about my career in marine biology and mentions they are building another resort on a nearby atoll that will also be involved in conservation. I feel as if I've hit an untapped goldmine. Hell yeah. I see what he's getting at. Need to do a good job Manon for the next few months. I meet Meg at the dive centre after. She runs me through EVERYTHING. Its a lot take to take in but I know I'm ready for the challenge and immediately have ideas on how to streamline some booking processes and implement AI for the somewhat neglected recordings, of coral identification. We go for lunch. I see another budgie on his perch. Surprise surprise. Its Barry's brother, Kiwi. I am told Kiwi never sits with women. So he's a misogynist and his brother is a cannibal. I don't get the birds here. Megan then informs me we have a snorkel guiding session today. Yay. Its why I came here. We take 4 romanians on the Dhoni. Sounds like the punchline to a bad joke. We swim across for 45 across a reef referred to as Turtle Point. There were 3 hawkbills eating the corals. I saw so many fish I have never even heard and recieved many fishy side eyes. Made a mental note I need to learn these species. We then headed to shark point. Insert nail biting here. The maldivian man behind the wheel of this viking-looking ship should be labelled a maldeviant for driving the way he was. I don't know where these guys get their licenses. Despite being 2 other crew members. Two hands on the wheel. Foot on the rudder. I must admit, I was impressed at the mans flexibility, those two pieces aren't exactly close. Respect the grind. We get in the water. He revs the engine to attract the sharks. I feel like literal shark bait. The water is 20m at least. I look down to my fins and scan the water around me in a 360. Nothing but blue ocean. I can't see a thing. If there was a shark it was watching me, not the other way around. A nurse shark appears. Docile in nature and best of all no teeth. Filter feeder. He swims 7m under us with his group of remora fish following him around like band groupies. As we head back to the boat. Lemon shark. No freaking way. I love lemon sharks. Although, teeth. He stays again about 7m below us but it does not stop me of swimming back to the boat with 1 eye on him at all times. I'm elated.
+I've just swum with sharks. I can do anything. We get back and immediately have another guest experience. Zip tying coral fragments to a coral frame for regrowth. I'm thrown back into the sea to collect some coral fragements in a bag but only have 20 minutes. Its a rush job. Mostly swallowed seawater rather than collecting coral pieces. We meet the northerner couple and they help us attach the coral to the frame. As we pull the coral chunk out with gloves on, Megan tells me the mucus coating them is their drfense mechanism and wearing gloves to take them out is a must, as cuts from them will get infected by rhe mucus and take months to heal. I nervous laugh and look to my legs. Some of the coral muc (muuke) has dropped onto my thighs. Shit. Lol. As we place the frame into the sea I put my gloves in the waistband of my swim shorts. We walk back to the dive centre, greeting several guests as we go. I look down again. My gloves have moved from my waist band and I now have a bulge. A budgie smuggler if you will, but not Barry or Kiwi tho. 2 crotch issues in one day. Killing it Manon. Its a new record for me I must say. Dinner and talk of the planned Manta Ray snorkelling session tomorrow. Camera will be taken this time. Now sleep I must. Big things await.
+
+<p>Day 3<p>
+2 pancakes. Jam. Latte. My usual now. Greet everybody with a smile and my fly up this time. Talk to some new girls, Yola and Malika, a very lively pair. They asked if I was on Selena Gomez's side or Hailey Bieber's. 50/50 chance I get this because I have no clue what they are on about. Selene Gomez. They go wild. I was correct. Phew. New friends obtained, they welcome me to the gang. Me and Meg leave to meet the watersports team in preparation for the Manta ray snorkeling. I chat to the guests that show up, a couple that live near Plymouth and the Husband is from Swansea. They've heard of me. Everytime I speak to new guests they greet Meg and then turn to me and say 'you must be the intern'. Correct. I am that intern. A newsletter was sent with my mugshot in. Its a horrendous photo. Great. The verdict is in from the scout boat. No Mantas in sight, so no trip today. Instead, Meg gives me a tour of the entire atoll so I can get my bearings. I see 5 squid, 1 black tip reef shark, and many fish all in the half an hour walk. Incredible biodiversity. We head back for lunch. I play it safe and haven't touched a curry yet. Meg tells me they are super spicy and she sticks to the blander stuff like rice and veg. Although, this does not matter to me because as soon as I've finished, my butt cheeks are clenched. There is no worry of blocking a toilet here, I am sure. I hurry back to my room. Slurry. I then head to the dive centre to prep for my 2:30pm snorkel session. 5 guests. But before I can get changed to leave, it hits me again. I use the dive centre toilet that has a wooden door with wide slots at the top that you can see out of if you stood on your toes. The noises from inside are audible to one of the dive instructors outside. I finish my ablutions and open the door. The dive instructor, K is there. I smile. She looks apprehensive. She heard. Damn it. The snorkel trip is a smooth ride. Even more fish today and I was able to take my camera, so I am more than pleased. I feel ungrateful slightly, as we only saw 2 lemon sharks and 1 nurse shark quite deep below and I keep wanting them to be bigger and shallower. Lol. Finish the day with dinner. I went for a curry. Might regret that tomorrow. We'll see. I head back to my room and find Madu (Mad-oo) and Gyuni (Guy-ar-knee). I find our interactions very funny. They speak amongst them selves in sri lankan then ask me some questions in english befire discussing amongst them selves again. Yesterday they asked me my height. The majority of staff here are all from different parts of asia with few maldivians, so are all relatively small in height. When i said 5'5 they both kind of smiled and marvelled at me like a specimen. The same with my tattoos. Me and Meg are aslo the only white staff so we get a lot of stares. I feel like a little pale alien lol. But the height thing seems to have an advantage. Everytime I go to my bed on the top bunk, one of my roomates will turn the ceiling fan off for me in case I hit my head even though there's mkre than a foot of space between my head and the fan. Just now I got into bed, Madu and Gyuni spoke amongst themselves for a while, before Madu appeared by my bed and handed me a glass of apple juice. I fely like a king. Anyway, Manta trip is reschrdulled for tommorow morning. So fingers crossed and cheeks clenched. Good night.
+
+<p>Day 4<p>
+A somewhat more chilled one but probably the BEST because I saw a freaking Blacktip reef shark! It was so ibcredibly calm and docile I was actually takenaback. Although it moved slightly and with intention I still kept looking back at my fins to make sute it didn't decide it wanted a taste of peewee for lunch. Thankfully he never circled baxk or took the slightrst bit of interest in me. I saw him at least 4 times in the hour tho. I don't think any other sea creature trumps sharks for me, octopus take a firm second place. Their millions of years of evolution have made them fine-tuned predators, optimal in every way for their environment. Sensational. So that was the house reef, outside some of the guest villas. It was better than turtle point, in terms of biodiversity, which is whrre the guests pay us to take them lol. After a truly spectacular morning, we wrnt back to thw office. No snorkel tours today so we sort out the office and organise long-term tasks that need to be completed between me and Meg. Meg is quite disorganisrd and this has proven somewgat frustrating. I've had to reiterate that we need to write doen what we have to do instead of just dropping it into convo everyday and forgetting about it. So thats what we did. I've also observed that many guests ask the same question... where's the best snorkel spot on the atoll or where's the best place to see turtles or something about the current. I suggested to Meg we make an annotated map of snorkel spots, routes and current direction so she doesn't have to point on the map everytime. She has taken this and suggested we add this to a board outside the office. 1 for Manon. I also have my own desk in the office now. How profesh. I am moving on up. I will also be designing some of the information boards on marine life inside the office. We finished early and headed to meet the girls to watch sunset. They are a super friendly bunch and very funny. I feel like I am going to fit in just fine. I need to get them some sweets or spmething, Yola gave us all a chocolate var for valentines day, Meg gave us stolen cupcakes and when I got back todya Gyani gave us all a rose she'd pinched from work. After sunset, we all went to get ready for the bar. Kareoke night. I sang 2 songs. Umbrella by Rhianna and Levitating by Dua Lipa. Extremely poorly. But it gave me the chance to meet staff from other departments of the hotel. My favourite day so far.
+
+<p>Day 5<p>
+The sea is so ibcredibly different at night. When we got in the water for the nighr snorkel it felt likr eatxhing a fiund footage horror game. There's a feeling like 'welp this is it for me folks, something is going to come from the depths and take me'. It felt like an out of body experiebce, akmost as if i'm playing a game and the character is in third person mode. Thats the best way to describe it. But thats just the initial feeling. About 15 minutes into the snorkel I realised its still the same reef, its srill the same sharks and creatures that live here in the day its just you see less, only whats illuminated by the your torch, yet at the same time you see so much more! You see more creatures that go amiss in the day, typically sleeping amongst the coral however now they are very much alive and awake, some lay waiting for prey to ambush, others evading predators. You see the different morphokogiez of the night dwellers. Large, bulbous, eyes to take in as much light as possible, 7 venomous spines ready to eject if you dare venture under a rock and so much more that I am too tired to think of! That was 7pm onwards, I have gotten ahead of myself still feeling the adrenaline rush from the slight sense of danger I felt everytime I shone the light and looked behind me to the darkness, ensuring nothing was lurking or caught me off guard. The morning we had a coral planting and a snorkeling session in the afternoon like normal, however these seem so far gone now! This may be my favourite day yet. Hopes of manta rays tomorrow morning! Hazar!
+
+<p>Day 6<p>
+A day late writing about day 6 so memory is hazy for specific detail. Honestly its so busy in a single day that it feels like I've done multiple days in one, the experiences blend into one big reef. Snorkel. Chat to guests. Eat. Shark. Turtle. Fish. Chat. Eat. Sleep. Snorkel. Repeat. Lol. But I do remember that yesterday was stand-out because I saw a leopard shark having a snooze at turtle point! We had 11 guests with us so a BIG group as opposed to the usual 6. Lots of fins. Lots of heads to ensure don't go drifting into the open ocean. No mantas in the morning :( they are hiding from me. So we took the morning off and I headed to the staff beach to work on my lappy in the sun. Ali (boat crew) and Favas (watersports) were on their day off so called me over and we chatted for a bit. Favas then informed me one time he saw a tiger shark at shark point.....long pause. I didn't think this was true however as it seems unlikely they would hang where the nurse and lemon sharks are, and the fact that they are rarely seen around this part of the Maldives. I then excused myself and left to room before lunch. Then was 11 guests in the afternoon. Time jumping. I apologise. Lots to remember. At shark point when we jump in I think it's really funny that the captain revs the engine to attract the sharks because I always think of when Brody in JAWS shouts at the mayor "its like ringing the dinner bell for christs sake!!". Haha. The evening however was different. We had a cocktail party to attend. Not that ee could drink. We were on duty. It was smoozin time with the guests. I spoke to a couple from York for about 45 minutes. Farmers. Mid 60s. Very lovely but you could tell the husband just speaks to the farm animals. The wife kept looking into the trees. I felt she always looks for an escape when he gets talking. Thankfully I had done my shift of mingling and could eat food and bed!
+
+<p>Day 7<p>
+The fear of ramadan nearing is ehat I awoke to. Thought perhaps its today, meaning breakfast finishes at 8. You're not allowed to eat outside the canteen. Earlier start for me. A single tear falls. Less sleep. Woke up earlier. Dropped laundry off. Get to canteen. Have my pancakes. Realise I could have slept longer. Ramadan is tomorrow. Sigh. Silly Manon. Meg joins, we head to the watersports for Manta snorkeling. Bitten to death by Mozzies. Yet again. You guessed it. No Manta's spotted. Praying for tomorrow. Maybe they join for Ramadan. We take the morning off. I again, go to the staff beach. Watch the crabs come out of their sand burrows and feel their eyes on me as I do some work. I hear their little scuttles as the tide ebbs and flows. Suprisingly loud little legs. Lunch. Carry on laptop work. 2:30pm snorkel session. 6 guests. 2 french that don't understand english or the concept of staying in a group when snorkeling. I don't care if you can free dive to the drop off or use the float to do push ups underwater. You look like a twat. Shark point. Nurse shark seems right under my fins, so close I had to move my legs out the way or I eoild have scraped him! We come back, and I do some turtle ID. I match the photos. We saw Yana, Peter Longley and Kimberely. Sunset. Dinner. Laptop work. Call Chaloob and Toffee. Re-realise Ramadan is a whole MONTH. Shit. I'm about to be skinnnyy. Then watch Meg do a marine biology presentation for guests. 30 people showed! Makes me excited for when I can present. Join some people at the canteen to talk. Bed. Pray for Manta.
+
+<p>Day 8<p>
+Breakfast was somewhat of a dissapointing event. Not only did I get up earlier but there was no pancakes! :( I expressed this to Meg and she offered that they may change it daily. I made a sad-looking nutella fold over. Actually similar to a pancake so couldn't complain too much. Mantas did in fact not join for Ramadan. I guess they are non-muslim. We had an admin/office morning instead. I showed Meg my designs for the display labels for some of the items we have in the office e.g. a cowrie shell, coral and giant clam ect. She liked the design but thought the information was too complex for tourists from different countries. Although she had a point I did do that to provoke questions and discussion from guests. She then showed me what she had for the 'ID Your Turtle' board. I see I will be the creative one in this work pair. She uses Chatgpt a lot. This worries me. She also orders from Temu and Shein, as they deliver here. This worries me further. No self-respecting marine biologist or just anyone with a care for planey orders from those sites. They are the biggest contributors to the fast-fashion industry, the products are made using fhild slavery and theyre products end up in landfill in third world countries. Not to mention that high levels of led and mercury were found in the clothing recently. Anyway. Rant over. Watch your impact. Use vinted. We then had a call that a big whale shark had been spotted! But whrn we checked, all the boats were out so we had no way of getting there in time :( Alas it was not meant to be today. Lunch time. Not as limited as I thought it would be, still a relatively good selexrion of dishes, so my worries for the ramadan month are diminished. Meg informed me last year she had to complain and push for proper food for non-muslims so maybe this is why. Breaktime. Staff beach. Small, definately juvenile black tip swims in front of me within maybe less than 30cm of water. I send video to fam. Good good. Afternoon snorkel session. WHAT A SESSION. Could not have predicted the events of todays session. So as soon as we get in at turtle point. Immediately I can tell there is a stronger current today. Mmmm. We start. Throughout the 45 minutes guests continually drift away in all directions. Its a constant round up on my part. I'm a border collie and they are the sheep. Another resorts snorkel group get dropped in close to us. We've got 10 guests, all not great swimmers. Many in life jackets. At one point we have 9 guests. Uhhhh. I swim into the pther group ans grab the bloke who's following a turtle and a different snorkel guide. "Excuse me sir, you're in the wrong group, we're over here". His wife is literally in our group and didn't tell us he was missing but I heard later she knew?!?! He start swimming back with me. I turn. He's back to the turtle. Wtf fr. I throw him the float I have, make him grab it and tow him back to our group that are now quite a way in front of us. Relief. 10 guests again. We head to shark point. This is where shit goes down. We jump in. Sharks below us. Eagle ray. Brilliant. Current - stronger. Not so brilliant. We shout to guests to stay close to the boat, DO NOT DRIFT OVER THE REEF BECAUSE THE CURRENT WILL TAKE YOU INTO THE LAGOON. Guess who doesn't fucking listen. That thick, sneaky turtle-watcher from earlier AND his wife. Their waving their arms. Meg gets the float and swims over. They are what seems miles away. Then Meg signals for the boat to come get them. The boat crew are Maldivian and don't speak english. This is insane I'm thinking. They throw me a float?!?! I tell the guests get back on board and power swim AGAINST the current over to them. I see a black tip shark on the way and hope it does not follow my somewhat frantic kicking. It did not. I get there. Throe my float to the woman. Meg tells me I didn't need to come here but tbf she had 2 people on 1 float against the current so later she was I think appreciative. Anyway. We swim as best we can pulling a person each against the current to a point where the boat is able to pick us up. However, where we were was all reef, so way too shallow for the Dhoni. The captain thankfully called watersports to get thr speed boat to pick us up, which they did. After meg and I full throttle kicking for about 10 minutes straight. What did the guests have to say? Nothing. No thank you. One sorry. Thickest people ever. When on the boat, the bloke then asks what sharks we saw?!?!?! Excuse me sir!?! I was towing your fat ass!! Anyway. The other guests cheered us as we sped past on the boat and congratulated us when we got back lol. Honestly at this point I was so thankful I did surf life saving and knew how to swim in the sea! It was so eventful I did not fully apprciate the eagle ray :( Then no dinner at thr usual 6pm as it was moved to 7:30pm. So ee had a night snorkel at 7pm and I endes up esting abut 8:30pm.
+
+</div>
+
+</div>
+
+
+<div class="email" id="email">
+  manon.rene@mrenebiology.org
+</div>
+
+<script>
+function offsetForLogo(){
+  const logo = document.querySelector(".logo");
+  const page = document.querySelector(".page");
+  if(!logo || !page) return;
+  page.style.paddingTop = (logo.offsetHeight + 20) + "px";
+}
+
+function reserveEmailSpace(){
+  const email = document.getElementById("email");
+  if(!email) return;
+
+  const style = getComputedStyle(email);
+  const bottom = parseFloat(style.bottom) || 0;
+  const clearance = Math.ceil(email.offsetHeight + bottom + 16);
+
+  document.documentElement.style.setProperty("--email-clearance", clearance + "px");
+}
+
+function relayout(){
+  offsetForLogo();
+  reserveEmailSpace();
+}
+
+window.addEventListener("load", relayout);
+window.addEventListener("resize", relayout);
+
+const logoImg = document.querySelector(".logo img");
+if(logoImg){
+  logoImg.addEventListener("load", relayout, { once:true });
+}
+
+/* block copy except email */
+const emailEl = document.getElementById("email");
+
+window.addEventListener("keydown", e=>{
+  if(emailEl && emailEl.contains(e.target)) return;
+  const key=(e.key||"").toLowerCase();
+  const mod=e.ctrlKey||e.metaKey;
+  if(mod && ["a","c","x","v","s","p","u"].includes(key)){
+    e.preventDefault();
+    e.stopPropagation();
+  }
+},{passive:false});
+
+["selectstart","copy","cut","paste"].forEach(evt=>{
+  window.addEventListener(evt,e=>{
+    if(emailEl && emailEl.contains(e.target)) return;
+    e.preventDefault();
+  },{passive:false});
+});
+
+window.addEventListener("contextmenu",e=>{
+  if(emailEl && emailEl.contains(e.target)) return;
+  e.preventDefault();
+},{passive:false});
+</script>
+
+</body>
+</html>

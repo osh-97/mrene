@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="en">
+<head>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Mono:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>2023</title>
+
+<style>
+:root{
+  --page-pad: clamp(22px,5vw,70px);
+  --email-clearance: 120px;
+}
+
+html,body{
+  margin:0;
+  background:#002DEE;
+  color:#fff;
+  font-family: "Atkinson Hyperlegible Mono", sans-serif;
+  overflow-x:hidden;
+  scrollbar-width:none;
+}
+body::-webkit-scrollbar{ display:none; }
+
+/* disable selection globally */
+*{
+  -webkit-user-select:none;
+  -moz-user-select:none;
+  -ms-user-select:none;
+  user-select:none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* allow selection ONLY for email */
+#email{
+  -webkit-user-select:text;
+  -moz-user-select:text;
+  -ms-user-select:text;
+  user-select:text;
+  cursor:text;
+}
+
+#email::selection{ background:#fff; color:#000; }
+#email::-moz-selection{ background:#fff; color:#000; }
+
+img,a{
+  -webkit-user-drag:none;
+  user-drag:none;
+}
+
+/* link styling */
+.value a{
+  color:inherit;
+  text-decoration:none;
+}
+.value a:hover{
+  text-decoration:underline;
+}
+
+/* logo */
+.logo{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  z-index:10;
+  pointer-events:none;
+}
+.logo img{
+  width:100%;
+  height:auto;
+  display:block;
+}
+
+/* page wrapper */
+.page{
+  box-sizing:border-box;
+  width:100%;
+  max-width:100%;
+  padding-left: var(--page-pad);
+  padding-right: var(--page-pad);
+  max-height: calc(100svh - var(--email-clearance));
+  overflow-y:auto;
+  overflow-x:hidden;
+  scrollbar-width:none;
+}
+.page::-webkit-scrollbar{ display:none; }
+
+/* header */
+.header-inner{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  width:100%;
+  max-width:100%;
+  gap: clamp(24px,4vw,80px);
+  flex-wrap:wrap;
+}
+
+.col{
+  flex: 0 1 auto;
+  min-width: 0;
+  display:flex;
+  flex-direction:column;
+  gap: 6px;
+}
+
+.label{
+  font-size: clamp(9px, 1.2vw, 12px);
+  letter-spacing: .08em;
+  opacity:.9;
+  line-height: 1.1;
+  white-space:nowrap;
+}
+
+.value{
+  font-size: clamp(11px, 2vw, 28px);
+  font-weight: 500;
+  line-height: 1.05;
+  white-space:nowrap;
+}
+
+.desc{
+  margin-top:30px;
+  width:100%;
+  max-width:100%;
+  font-size: clamp(15px,1.6vw,19px);
+  line-height:1.5;
+  text-align: justify;
+  text-justify: inter-word;
+  hyphens:none;
+  -webkit-hyphens:none;
+  -ms-hyphens:none;
+  overflow-wrap:anywhere;
+}
+
+/* credits */
+.credits{
+  position:fixed;
+  bottom:18px;
+  left: var(--page-pad);
+  font-size:14px;
+  opacity:.9;
+  z-index:11;
+}
+
+/* email */
+.email{
+  position:fixed;
+  bottom:18px;
+  right: var(--page-pad);
+  font-size: clamp(13px, 3vw, 20px);
+  text-align:right;
+  z-index:11;
+}
+
+@media (max-width:500px){
+  .header-inner{ gap:14px; }
+  .desc{ text-align:left; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="logo">
+  <img src="logo2.png" alt="">
+</div>
+
+<div class="page">
+
+  <div class="header-inner">
+
+    <div class="col">
+      <div class="label">YEAR</div>
+      <div class="value">2023</div>
+    </div>
+
+    <div class="col">
+      <div class="label">PROJECT</div>
+      <div class="value">Sea Turtles</div>
+    </div>
+
+    <div class="col">
+      <div class="label">ROLE</div>
+      <div class="value">Conservationist</div>
+    </div>
+
+    <div class="col">
+      <div class="label">LOCATION</div>
+      <div class="value">
+        <a href="https://www.google.com/maps/search/?api=1&query=COPROT+Tortugas+de+Osa"
+           target="_blank"
+           rel="noopener">
+          Osa Peninsula, CSTR
+        </a>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="label">ORG</div>
+      <div class="value">
+        <a href="https://coprot.org" target="_blank" rel="noopener">
+          COPROT
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="desc">
+    COPROT is a community-driven conservation project that aims to conserve sea turtle nesting beach habitat on the Osa Peninsula, Costa Rica.
+    We protect 8km of beach where we register over 7000 nests per season from the Olive Ridley and Pacific green species.
+  </div>
+
+</div>
+
+
+<div class="email" id="email">
+  manon.rene@mrenebiology.org
+</div>
+
+<script>
+function offsetForLogo(){
+  const logo = document.querySelector(".logo");
+  const page = document.querySelector(".page");
+  if(!logo || !page) return;
+  page.style.paddingTop = (logo.offsetHeight + 20) + "px";
+}
+
+function reserveEmailSpace(){
+  const email = document.getElementById("email");
+  if(!email) return;
+
+  const style = getComputedStyle(email);
+  const bottom = parseFloat(style.bottom) || 0;
+  const clearance = Math.ceil(email.offsetHeight + bottom + 16);
+
+  document.documentElement.style.setProperty("--email-clearance", clearance + "px");
+}
+
+function relayout(){
+  offsetForLogo();
+  reserveEmailSpace();
+}
+
+window.addEventListener("load", relayout);
+window.addEventListener("resize", relayout);
+
+const logoImg = document.querySelector(".logo img");
+if(logoImg){
+  logoImg.addEventListener("load", relayout, { once:true });
+}
+
+/* block copy except email */
+const emailEl = document.getElementById("email");
+
+window.addEventListener("keydown", e=>{
+  if(emailEl && emailEl.contains(e.target)) return;
+  const key=(e.key||"").toLowerCase();
+  const mod=e.ctrlKey||e.metaKey;
+  if(mod && ["a","c","x","v","s","p","u"].includes(key)){
+    e.preventDefault();
+    e.stopPropagation();
+  }
+},{passive:false});
+
+["selectstart","copy","cut","paste"].forEach(evt=>{
+  window.addEventListener(evt,e=>{
+    if(emailEl && emailEl.contains(e.target)) return;
+    e.preventDefault();
+  },{passive:false});
+});
+
+window.addEventListener("contextmenu",e=>{
+  if(emailEl && emailEl.contains(e.target)) return;
+  e.preventDefault();
+},{passive:false});
+</script>
+
+</body>
+</html>

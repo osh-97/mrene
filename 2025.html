@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="en">
+<head>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Mono:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>2025</title>
+
+<style>
+:root{
+  --page-pad: clamp(22px,5vw,70px);
+  --email-clearance: 120px;
+}
+
+html,body{
+  margin:0;
+  background:#002DEE;
+  color:#fff;
+  font-family:"Atkinson Hyperlegible Mono",sans-serif;
+  overflow-x:hidden;
+  scrollbar-width:none;
+}
+body::-webkit-scrollbar{ display:none; }
+
+*{
+  -webkit-user-select:none;
+  -moz-user-select:none;
+  -ms-user-select:none;
+  user-select:none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+#email{
+  -webkit-user-select:text;
+  -moz-user-select:text;
+  -ms-user-select:text;
+  user-select:text;
+  cursor:text;
+}
+#email::selection{ background:#fff; color:#000; }
+#email::-moz-selection{ background:#fff; color:#000; }
+
+img,a{ -webkit-user-drag:none; user-drag:none; }
+
+.logo{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  z-index:10;
+  pointer-events:none;
+}
+.logo img{
+  width:100%;
+  height:auto;
+  display:block;
+}
+
+.page{
+  box-sizing:border-box;
+  width:100%;
+  max-width:100%;
+  padding-left: var(--page-pad);
+  padding-right: var(--page-pad);
+  max-height: calc(100svh - var(--email-clearance));
+  overflow-y:auto;
+  overflow-x:hidden;
+  scrollbar-width:none;
+}
+.page::-webkit-scrollbar{ display:none; }
+
+.header-inner{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  width:100%;
+  max-width:100%;
+  gap: clamp(24px,4vw,80px);
+  flex-wrap:wrap;
+}
+
+.col{
+  flex: 0 1 auto;
+  min-width: 0;
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+}
+
+.label{
+  font-size: clamp(9px, 1.2vw, 12px);
+  letter-spacing:.08em;
+  opacity:.9;
+  line-height:1.1;
+  white-space:nowrap;
+}
+
+/* TITLE — NOW JUSTIFIED */
+.value{
+  font-size: clamp(11px, 2.2vw, 28px);
+  font-weight: 500;
+  line-height: 1.05;
+  white-space: normal;
+  overflow-wrap: anywhere;
+
+  text-align: justify;
+  text-justify: inter-word;
+  text-align-last: justify;
+}
+
+.desc{
+  margin-top:30px;
+  width:100%;
+  max-width:100%;
+  font-size: clamp(15px,1.6vw,19px);
+  line-height:1.5;
+
+  text-align: justify;
+  text-justify: inter-word;
+
+  hyphens:none;
+  -webkit-hyphens:none;
+  -ms-hyphens:none;
+
+  overflow-wrap: anywhere;
+}
+
+.credits{
+  position:fixed;
+  bottom:18px;
+  left: var(--page-pad);
+  font-size:14px;
+  opacity:.9;
+  z-index:11;
+}
+
+.email{
+  position:fixed;
+  bottom:18px;
+  right: var(--page-pad);
+  font-size: clamp(13px, 3vw, 20px);
+  opacity:1;
+  text-align:right;
+  z-index:11;
+}
+
+@media (max-width:500px){
+  .header-inner{ gap:14px; }
+  .desc{ text-align:left; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="logo">
+  <img src="logo2.png" alt="">
+</div>
+
+<div class="page">
+
+  <div class="header-inner">
+    <div class="col">
+<div class="label">UNDERGRAD DISSERTATION</div>
+      <div class="value">
+        Assessing the Spatial Overlap Between the Home Ranges of Resident Bottlenose Dolphins
+        (Tursiops truncatus) with Marine Traffic, and Fishing Activity in Alghero, Northwest Sardinia
+      </div>
+    </div>
+  </div>
+
+  <div class="desc">
+Abstract
+<p>
+Understanding the spatial dynamics and habitat use of cetacean populations not only
+provide fundamental insights into how animals interact with their environment and respond to
+anthropogenic stressors, but is also critical for effective conservation. This study examines
+the ranging patterns of 10 resident bottlenose dolphins (Tursiops truncatus) in Alghero,
+northwest Sardinia, to assess the overlap between their critical habitats and two major
+human-induced disturbances in the region; marine vessel traffic and fishing activities. The
+objectives were to (1) identify key habitat areas essential for the dolphins' daily activities, (2)
+assess the influence of local anthropogenic pressures on dolphin behaviour and habitat use,
+and (3) provide data-driven recommendations for mitigating human-dolphin conflicts. Using
+photo-identification data collected from April to October 2024, we applied kernel density
+estimation (KDE) to determine the home and core ranges of each individual. When overlaid
+with areas representing the identified threats, we found most dolphins experienced
+significant exposure to both marine traffic and fishing activities, with ≥70% overlap in their
+home ranges and ≥94% in their core areas for marine vessel traffic. Overlap with fishing
+activity was also considerable, though more variable, with ≥57% overlap in home ranges and
+≥35% in core areas. Additionally, statistical analysis revealed considerable individual
+variation in response to marine traffic, with some dolphins exhibiting strong positive
+correlations, while others showed negative correlations, indicating limited interaction with
+high-traffic zones. In contrast, fishing activity demonstrated weaker correlations overall, with
+a few individuals showing moderate positive associations. These findings underscore the
+complex nature of dolphin responses to human-induced disturbances, highlighting the need
+for targeted conservation measures. One proposed strategy is extending the Marine
+Protected Area (MPA) in Alghero, to enhance protection by considering individual area-
+fidelity.
+  </div>
+
+</div>
+
+
+<div class="email" id="email">
+  manon.rene@mrenebiology.org
+</div>
+
+<script>
+function offsetForLogo(){
+  const logo = document.querySelector(".logo");
+  const page = document.querySelector(".page");
+  if(!logo || !page) return;
+  page.style.paddingTop = (logo.offsetHeight + 20) + "px";
+}
+
+function reserveEmailSpace(){
+  const email = document.getElementById("email");
+  if(!email) return;
+
+  const style = getComputedStyle(email);
+  const bottom = parseFloat(style.bottom) || 0;
+
+  const safeArea = parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--safe-area-bottom")) || 0;
+  const clearance = Math.ceil(email.offsetHeight + bottom + 16 + safeArea);
+
+  document.documentElement.style.setProperty("--email-clearance", clearance + "px");
+}
+
+function relayout(){
+  offsetForLogo();
+  reserveEmailSpace();
+}
+
+window.addEventListener("load", relayout);
+window.addEventListener("resize", relayout);
+
+const logoImg = document.querySelector(".logo img");
+if(logoImg){
+  logoImg.addEventListener("load", relayout, { once:true });
+}
+
+const emailEl = document.getElementById("email");
+
+window.addEventListener("keydown", e=>{
+  if(emailEl && emailEl.contains(e.target)) return;
+
+  const key = (e.key || "").toLowerCase();
+  const ctrlOrCmd = e.ctrlKey || e.metaKey;
+
+  if(ctrlOrCmd && ["a","c","x","v","s","p","u"].includes(key)){
+    e.preventDefault();
+    e.stopPropagation();
+  }
+},{passive:false});
+
+["selectstart","copy","cut","paste"].forEach(evt=>{
+  window.addEventListener(evt, e=>{
+    if(emailEl && emailEl.contains(e.target)) return;
+    e.preventDefault();
+  }, {passive:false});
+});
+
+window.addEventListener("contextmenu", e=>{
+  if(emailEl && emailEl.contains(e.target)) return;
+  e.preventDefault();
+},{passive:false});
+</script>
+
+</body>
+</html>

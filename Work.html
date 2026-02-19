@@ -1,0 +1,398 @@
+<!doctype html>
+<html lang="en">
+<head>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Mono:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MRENE</title>
+
+<style>
+:root{
+  --page-pad: clamp(22px,5vw,70px);
+  --cap-top: 120px;
+  --mid-y: 50vh;
+  --ui-scale: 100%;
+}
+
+html{
+  font-size: var(--ui-scale);
+}
+
+html,body{
+  margin:0;
+  height:100%;
+  background:#002DEE;
+  font-family: "Atkinson Hyperlegible Mono", sans-serif;
+  color:#fff;
+  overflow:hidden;
+  transition:background 600ms linear;
+}
+
+/* --- disable selection globally --- */
+*{
+  -webkit-user-select:none;
+  -moz-user-select:none;
+  -ms-user-select:none;
+  user-select:none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* allow selection ONLY for the email */
+#email{
+  -webkit-user-select:text;
+  -moz-user-select:text;
+  -ms-user-select:text;
+  user-select:text;
+  cursor:text;
+}
+
+/* inverted selection highlight ONLY for email */
+#email::selection{
+  background:#fff;
+  color:#000;
+}
+#email::-moz-selection{
+  background:#fff;
+  color:#000;
+}
+
+/* prevent dragging */
+img, a{
+  -webkit-user-drag:none;
+  user-drag:none;
+}
+
+/* logo */
+.logo{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  z-index:10;
+  pointer-events:none;
+}
+.logo img{
+  width:100%;
+  height:auto;
+  display:block;
+}
+
+/* caption */
+.caption{
+  position:fixed;
+  left: var(--page-pad);
+  top: var(--cap-top);
+  font-size: clamp(13px, 3vw, 20px);
+  opacity:1;
+  z-index:11;
+  pointer-events:none;
+  line-height:1.1;
+}
+
+/* email */
+.email{
+  position:fixed;
+  bottom:18px;
+  right: var(--page-pad);
+  font-size: clamp(13px, 3vw, 20px);
+  opacity:1;
+  text-align:right;
+  z-index:11;
+}
+
+/* viewport */
+.viewport{
+  position:fixed;
+  inset:0;
+  overflow:hidden;
+}
+
+.track{
+  height:100%;
+  width:100%;
+  transition:transform 700ms ease;
+}
+
+/* sections */
+.section{
+  height:100vh;
+  position:relative;
+}
+
+/* floating text */
+.section span{
+  position:absolute;
+  top: var(--mid-y);
+  left:50%;
+  width: calc(100% - 40px);
+  text-align:center;
+  opacity:0;
+  transform: translate(-50%, calc(-50% + 30px));
+  transition:opacity 700ms ease, transform 700ms ease;
+  font-size:28px;
+  color:#fff;
+}
+
+.section.active span{
+  opacity:1;
+  transform: translate(-50%, -50%);
+}
+
+/* clickable link slide */
+.slide-link{
+  color:inherit;
+  text-decoration:none;
+  cursor:pointer;
+}
+.slide-link:hover{
+  text-decoration:underline;
+}
+</style>
+</head>
+
+<body>
+
+<div class="logo">
+  <img src="logo2.png" alt="">
+</div>
+
+<div class="caption" id="caption">My life in the deep end :</div>
+
+<div class="viewport">
+<div class="track" id="track">
+
+  <!-- 2023 -->
+  <section class="section">
+    <span>
+      <a href="2023.html" class="slide-link">2023 Osa Peninsula, CSTR</a>
+    </span>
+  </section>
+
+  <!-- 2024 -->
+  <section class="section">
+    <span>
+      <a href="2024.html" class="slide-link">2024 Alghero, SD</a>
+    </span>
+  </section>
+
+  <!-- 2025 -->
+  <section class="section">
+    <span>
+      <a href="2025.html" class="slide-link">2025 BA Hons</a>
+    </span>
+  </section>
+
+  <!-- 2026 -->
+  <section class="section">
+    <span>
+      <a href="2026.html" class="slide-link">2026 North Malé Atoll, MV</a>
+    </span>
+  </section>
+
+</div>
+
+<div class="email" id="email">manon.rene@mrenebiology.org</div>
+
+<script>
+const track = document.getElementById("track");
+const sections = Array.from(document.querySelectorAll(".section"));
+const emailEl = document.getElementById("email");
+
+let index = 0;
+let locked = false;
+
+const MANUAL_TRANSITION = "transform 700ms ease";
+const AUTO_TRANSITION   = "transform 3200ms cubic-bezier(.22,.61,.36,1)";
+
+function setTransition(isAuto){
+  track.style.transition = isAuto ? AUTO_TRANSITION : MANUAL_TRANSITION;
+}
+
+function updateBackground(i){
+  const total = sections.length - 1;
+  const t = total === 0 ? 0 : (i / total);
+
+  const start = { r:0,  g:45,  b:238 };
+  const end   = { r:19, g:24,  b:44  };
+
+  const r = Math.round(start.r + (end.r - start.r) * t);
+  const g = Math.round(start.g + (end.g - start.g) * t);
+  const b = Math.round(start.b + (end.b - start.b) * t);
+
+  const color = `rgb(${r},${g},${b})`;
+
+  /* keep html + body in sync to avoid left strip */
+  document.body.style.backgroundColor = color;
+  document.documentElement.style.backgroundColor = color;
+}
+
+function layoutAnchors(){
+  const logo = document.querySelector(".logo");
+  const caption = document.getElementById("caption");
+  const email = document.getElementById("email");
+  if(!logo || !caption || !email) return;
+
+  const GAP = 50;
+  const capTop = Math.round(logo.offsetHeight + GAP);
+  document.documentElement.style.setProperty("--cap-top", capTop + "px");
+
+  requestAnimationFrame(()=>{
+    const capRect = caption.getBoundingClientRect();
+    const emailRect = email.getBoundingClientRect();
+
+    const nudgeUp = Math.round(
+      Math.min(70, Math.max(20, window.innerHeight * 0.06))
+    );
+
+    const mid = (capRect.bottom < emailRect.top)
+      ? (capRect.bottom + emailRect.top) / 2 - nudgeUp
+      : window.innerHeight / 2;
+
+    document.documentElement.style.setProperty("--mid-y", mid + "px");
+  });
+}
+
+function setActive(i,{mode="manual"}={}){
+  sections.forEach((s,n)=>s.classList.toggle("active", n===i));
+  setTransition(mode==="auto");
+  track.style.transform = `translateY(${-i*window.innerHeight}px)`;
+  updateBackground(i);
+}
+
+function go(delta,{mode="manual"}={}){
+  if(locked) return;
+
+  const next = Math.max(0, Math.min(sections.length-1, index+delta));
+  if(next === index) return;
+
+  index = next;
+  locked = true;
+
+  setActive(index,{mode});
+  setTimeout(()=>locked=false, (mode==="auto") ? 3300 : 700);
+}
+
+let autoEnabled = true;
+let autoTimer = null;
+const AUTO_STEP_EVERY = 3600;
+
+function startAuto(){
+  if(autoTimer) return;
+  autoTimer = setInterval(()=>{
+    if(!autoEnabled || locked) return;
+    if(index >= sections.length - 1){ stopAuto(); return; }
+    go(1,{mode:"auto"});
+  }, AUTO_STEP_EVERY);
+}
+
+function stopAuto(){
+  clearInterval(autoTimer);
+  autoTimer = null;
+}
+
+const PAUSE_AFTER_INTERACTION = 3000;
+let resumeTimer = null;
+
+function pauseAutoTemporarily(){
+  autoEnabled = false;
+  stopAuto();
+  clearTimeout(resumeTimer);
+  resumeTimer = setTimeout(()=>{
+    autoEnabled = true;
+    startAuto();
+  }, PAUSE_AFTER_INTERACTION);
+}
+
+function initLayout(){
+  layoutAnchors();
+  setActive(index,{mode:"auto"});
+  startAuto();
+}
+
+const logoImg = document.querySelector(".logo img");
+
+if(logoImg && logoImg.complete && logoImg.naturalHeight > 0){
+  initLayout();
+} else if(logoImg){
+  logoImg.addEventListener("load", initLayout, { once:true });
+} else {
+  initLayout();
+}
+
+window.addEventListener("resize", ()=>{
+  layoutAnchors();
+  setActive(index,{mode:autoEnabled?"auto":"manual"});
+},{passive:true});
+
+window.addEventListener("wheel", e=>{
+  e.preventDefault();
+  pauseAutoTemporarily();
+  go(e.deltaY>0?1:-1,{mode:"manual"});
+},{passive:false});
+
+window.addEventListener("keydown", e=>{
+  /* if the event originates in the email, don't block selection/copy keys */
+  if(emailEl && emailEl.contains(e.target)) return;
+
+  if(["ArrowDown","PageDown"," "].includes(e.key)){
+    e.preventDefault();
+    pauseAutoTemporarily();
+    go(1,{mode:"manual"});
+  }
+  if(["ArrowUp","PageUp"].includes(e.key)){
+    e.preventDefault();
+    pauseAutoTemporarily();
+    go(-1,{mode:"manual"});
+  }
+
+  /* block common copy/select shortcuts everywhere except email */
+  const key = (e.key || "").toLowerCase();
+  const ctrlOrCmd = e.ctrlKey || e.metaKey;
+  if(ctrlOrCmd && ["a","c","x","v","s","p","u"].includes(key)){
+    e.preventDefault();
+    e.stopPropagation();
+  }
+},{passive:false});
+
+/* block selection/copy everywhere except email */
+["selectstart","copy","cut","paste"].forEach(evt=>{
+  window.addEventListener(evt, e=>{
+    if(emailEl && emailEl.contains(e.target)) return;
+    e.preventDefault();
+  }, {passive:false});
+});
+
+/* block right-click everywhere except email */
+window.addEventListener("contextmenu", e=>{
+  if(emailEl && emailEl.contains(e.target)) return;
+  e.preventDefault();
+},{passive:false});
+
+let startY=null;
+
+window.addEventListener("touchstart", e=>{
+  pauseAutoTemporarily();
+  startY=e.touches[0].clientY;
+},{passive:true});
+
+window.addEventListener("touchmove", e=>{
+  e.preventDefault();
+},{passive:false});
+
+window.addEventListener("touchend", e=>{
+  if(startY===null) return;
+
+  const endY=e.changedTouches[0].clientY;
+  const diff=startY-endY;
+
+  if(Math.abs(diff)>40){
+    pauseAutoTemporarily();
+    go(diff>0?1:-1,{mode:"manual"});
+  }
+  startY=null;
+},{passive:true});
+</script>
+
+</body>
+</html>

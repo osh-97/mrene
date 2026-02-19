@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="en">
+<head>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Mono:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>2024</title>
+
+<style>
+:root{
+  --page-pad: clamp(22px,5vw,70px);
+  --email-clearance: 120px; /* will be overwritten by JS */
+}
+
+html,body{
+  margin:0;
+  background:#002DEE;
+  color:#fff;
+  font-family: "Atkinson Hyperlegible Mono", sans-serif;
+  overflow-x:hidden;
+  scrollbar-width:none;
+}
+body::-webkit-scrollbar{ display:none; }
+
+/* --- disable selection globally (matches first page) --- */
+*{
+  -webkit-user-select:none;
+  -moz-user-select:none;
+  -ms-user-select:none;
+  user-select:none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* allow selection ONLY for the email */
+#email{
+  -webkit-user-select:text;
+  -moz-user-select:text;
+  -ms-user-select:text;
+  user-select:text;
+  cursor:text;
+}
+
+/* inverted selection highlight ONLY for email */
+#email::selection{ background:#fff; color:#000; }
+#email::-moz-selection{ background:#fff; color:#000; }
+
+/* prevent dragging */
+img, a{
+  -webkit-user-drag:none;
+  user-drag:none;
+}
+
+/* link styling (keeps your design; only underline on hover) */
+.value a{
+  color:inherit;
+  text-decoration:none;
+}
+.value a:hover{
+  text-decoration:underline;
+}
+
+/* logo */
+.logo{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  z-index:10;
+  pointer-events:none;
+}
+.logo img{
+  width:100%;
+  height:auto;
+  display:block;
+}
+
+/* page wrapper — NOW SCROLLS INSIDE + RESERVES SPACE FOR EMAIL */
+.page{
+  box-sizing:border-box;
+  width:100%;
+  max-width:100%;
+  padding-left: var(--page-pad);
+  padding-right: var(--page-pad);
+
+  /* the important bit: make the content area end above the fixed email */
+  max-height: calc(100svh - var(--email-clearance));
+  overflow-y:auto;
+  overflow-x:hidden;
+
+  scrollbar-width:none;
+}
+.page::-webkit-scrollbar{ display:none; }
+
+/* HEADER: full-width spacing */
+.header-inner{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  width:100%;
+  max-width:100%;
+  gap: clamp(24px,4vw,80px);
+  flex-wrap:wrap;
+}
+
+/* columns */
+.col{
+  flex: 0 1 auto;
+  min-width: 0;
+  display:flex;
+  flex-direction:column;
+  gap: 6px;
+}
+
+/* labels */
+.label{
+  font-size: clamp(9px, 1.2vw, 12px);
+  letter-spacing: .08em;
+  opacity:.9;
+  line-height: 1.1;
+  white-space:nowrap;
+}
+
+/* values */
+.value{
+  font-size: clamp(11px, 2.2vw, 28px);
+  font-weight: 500;
+  line-height: 1.05;
+  white-space:nowrap;
+}
+
+/* paragraph — full width + justified, but NO hyphenation/word cutting */
+.desc{
+  margin-top:30px;
+  width:100%;
+  max-width:100%;
+  font-size: clamp(15px,1.6vw,19px);
+  line-height:1.5;
+
+  text-align: justify;
+  text-justify: inter-word;
+
+  hyphens:none;
+  -webkit-hyphens:none;
+  -ms-hyphens:none;
+
+  overflow-wrap: anywhere;
+}
+
+/* email bottom right */
+.email{
+  position:fixed;
+  bottom:18px;
+  right: var(--page-pad);
+  font-size: clamp(13px, 3vw, 20px);
+  opacity:1;
+  text-align:right;
+  z-index:11;
+}
+
+/* extra help on very small screens */
+@media (max-width:500px){
+  .header-inner{ gap: 14px; }
+  .desc{ text-align: left; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="logo">
+  <img src="logo2.png" alt="">
+</div>
+
+<div class="page">
+
+  <div class="header-inner">
+    <div class="col">
+      <div class="label">YEAR</div>
+      <div class="value">2024</div>
+    </div>
+
+    <div class="col">
+      <div class="label">PROJECT</div>
+      <div class="value">Dolphins</div>
+    </div>
+
+    <div class="col">
+      <div class="label">ROLE</div>
+      <div class="value">Researcher</div>
+    </div>
+
+    <div class="col">
+      <div class="label">LOCATION</div>
+      <div class="value">
+        <a href="https://www.google.com/maps/search/?api=1&query=Alghero%2C%20Sardinia%2C%20Italy"
+           target="_blank"
+           rel="noopener">
+          Alghero, SD
+        </a>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="label">ORG</div>
+      <div class="value">
+        <a href="https://www.mareterra-erc.org/en"
+           target="_blank"
+           rel="noopener">
+          MareTerra Onlus
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="desc">
+    Sardinia (Italy) is among the most beautiful and uncontaminated places in the Mediterranean Sea. Our headquarters is Alghero, in the North-West coast of the island. Most of our present research and monitoring programs are carried out between the northernmost point of the island and the southern coast of the small town of Bosa. Part of this area is protected by national and international laws for its remarkable naturalistic and geological relevance. We are inside the SCI (Site of Community Importance) of “Bosa, Capo Marargiu and Porto Tangone”, the SCI “Capo Caccia and Punta del Giglio”, and the Marine Protected Area “Capo Caccia and Isola Piana”.
+  </div>
+
+</div>
+
+<div class="email" id="email">
+  manon.rene@mrenebiology.org
+</div>
+
+<script>
+function offsetForLogo(){
+  const logo = document.querySelector(".logo");
+  const page = document.querySelector(".page");
+  if(!logo || !page) return;
+  page.style.paddingTop = (logo.offsetHeight + 20) + "px";
+}
+
+function reserveEmailSpace(){
+  const email = document.getElementById("email");
+  if(!email) return;
+
+  const style = getComputedStyle(email);
+  const bottom = parseFloat(style.bottom) || 0;
+
+  // if you later add a CSS safe-area var, this will pick it up; otherwise 0
+  const safeArea =
+    parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--safe-area-bottom")) || 0;
+
+  // +16 = a little breathing room between scroll area and fixed email
+  const clearance = Math.ceil(email.offsetHeight + bottom + 16 + safeArea);
+
+  document.documentElement.style.setProperty("--email-clearance", clearance + "px");
+}
+
+function relayout(){
+  offsetForLogo();
+  reserveEmailSpace();
+}
+
+window.addEventListener("load", relayout);
+window.addEventListener("resize", relayout);
+
+const logoImg = document.querySelector(".logo img");
+if(logoImg){
+  logoImg.addEventListener("load", relayout, { once:true });
+}
+
+/* --- selection/copy/contextmenu blocking (matches first page behavior) --- */
+const emailEl = document.getElementById("email");
+
+/* block common copy/select shortcuts everywhere except email */
+window.addEventListener("keydown", e=>{
+  if(emailEl && emailEl.contains(e.target)) return;
+
+  const key = (e.key || "").toLowerCase();
+  const ctrlOrCmd = e.ctrlKey || e.metaKey;
+
+  if(ctrlOrCmd && ["a","c","x","v","s","p","u"].includes(key)){
+    e.preventDefault();
+    e.stopPropagation();
+  }
+},{passive:false});
+
+/* block selection/copy everywhere except email */
+["selectstart","copy","cut","paste"].forEach(evt=>{
+  window.addEventListener(evt, e=>{
+    if(emailEl && emailEl.contains(e.target)) return;
+    e.preventDefault();
+  }, {passive:false});
+});
+
+/* block right-click everywhere except email */
+window.addEventListener("contextmenu", e=>{
+  if(emailEl && emailEl.contains(e.target)) return;
+  e.preventDefault();
+},{passive:false});
+</script>
+
+</body>
+</html>
