@@ -10,7 +10,7 @@
 
 <title>Welcome</title>
 
-<!-- Preload next possible pages -->
+<!-- Preload next pages -->
 <link rel="prefetch" href="https://mrene.org/work.html">
 <link rel="prefetch" href="https://mrene.org/index.html">
 
@@ -49,24 +49,32 @@ body{
        autoplay
        muted
        playsinline
+       webkit-playsinline
        preload="auto">
 </video>
 
 <script>
 const video = document.getElementById("bgvid");
-let tappedOnce = false;
 
-/* ensure autoplay actually triggers everywhere */
+let tappedOnce = false;
+let redirected = false;
+
+/* force autoplay */
 window.addEventListener("load", () => {
   video.play().catch(()=>{});
 });
 
-/* play once → redirect */
-video.addEventListener("ended", () => {
-  window.location.href = "index.html";
-});
+/* redirect safely once */
+function goNext(){
+  if (redirected) return;
+  redirected = true;
+  window.location.replace("https://mrene.org/work.html");
+}
 
-/* first tap = unmute | second tap = redirect */
+/* when video finishes */
+video.addEventListener("ended", goNext);
+
+/* first tap = unmute | second tap = skip */
 window.addEventListener("pointerdown", () => {
 
   if(!tappedOnce){
@@ -76,7 +84,7 @@ window.addEventListener("pointerdown", () => {
     return;
   }
 
-  window.location.href = "https://mrene.org/work.html";
+  goNext();
 });
 </script>
 
