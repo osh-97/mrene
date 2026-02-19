@@ -10,6 +10,10 @@
 
 <title>Welcome</title>
 
+<!-- Preload next possible pages -->
+<link rel="prefetch" href="work.html">
+<link rel="prefetch" href="index.html">
+
 <style>
 html,body{
   margin:0;
@@ -19,13 +23,11 @@ html,body{
   cursor:none;
 }
 
-/* real fullscreen height on modern browsers */
 body{
   height:100dvh;
-  height:-webkit-fill-available; /* older iOS fallback */
+  height:-webkit-fill-available;
 }
 
-/* fullscreen video */
 .bg-video{
   position:fixed;
   top:0;
@@ -54,32 +56,29 @@ body{
 const video = document.getElementById("bgvid");
 let tappedOnce = false;
 
-/* redirect after video ends */
+/* ensure autoplay actually triggers everywhere */
+window.addEventListener("load", () => {
+  video.play().catch(()=>{});
+});
+
+/* play once → redirect */
 video.addEventListener("ended", () => {
   window.location.href = "index.html";
 });
 
-/* unified tap/click handler */
+/* first tap = unmute | second tap = redirect */
 window.addEventListener("pointerdown", () => {
 
   if(!tappedOnce){
     tappedOnce = true;
-
     video.muted = false;
-
-    const playPromise = video.play();
-    if(playPromise !== undefined){
-      playPromise.catch(()=>{});
-    }
-
+    video.play().catch(()=>{});
     return;
   }
 
-  /* second tap → redirect */
   window.location.href = "work.html";
 });
 </script>
 
 </body>
 </html>
-
